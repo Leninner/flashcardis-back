@@ -24,7 +24,7 @@
 
 ## Description
 
-This FlashCardis Back project was build with [Nest](https://github.com/nestjs/nest) framework TypeScript. Cambio prueba
+This FlashCardis Back project was build with [Nest](https://github.com/nestjs/nest) framework TypeScript
 
 ## Installation
 
