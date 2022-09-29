@@ -1,0 +1,13 @@
+name: Continuous Integration
+
+on:
+  pull_request:
+    branches:
+      - main
+  
+jobs:
+  build_project:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Say the project name
+        run: echo "The project name is ${{ github.event.repository.name }}"
