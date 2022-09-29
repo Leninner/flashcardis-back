@@ -4,10 +4,31 @@ on:
   pull_request:
     branches:
       - main
+      - develop
   
 jobs:
-  build_project:
+  say_project_info:
     runs-on: ubuntu-latest
     steps:
-      - name: Say the project name
-        run: echo "The project name is ${{ github.event.repository.name }}"
+      - name: Say the project info
+        run: |
+          echo "Project name: ${{ github.event.repository.name }}"
+          echo "Project URL: ${{ github.event.repository.html_url }}"
+          echo "Project description: ${{ github.event.repository.description }}"
+          echo "Project owner: ${{ github.event.repository.owner.login }}"
+          echo "Project owner URL: ${{ github.event.repository.owner.html_url }}"
+
+  test_lint:
+      name: CI
+      runs-on: ubuntu-latest
+      steps:
+        - uses: actions/checkout@v3
+        - uses: actions/setup-node@v3
+          with:
+            node-version: 16
+        - name: Install dependencies
+          run: npm install
+        - name: Run linter
+          run: npm run lint
+        - name: Run tests
+          run: npm run test
