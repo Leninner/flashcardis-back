@@ -3,7 +3,10 @@ import { Document } from 'mongoose'
 
 export type FlashcardDocument = Flashcard & Document
 
-@Schema()
+@Schema({
+  timestamps: true,
+  collection: 'flashcards',
+})
 export class Flashcard {
   @Prop()
   question: string

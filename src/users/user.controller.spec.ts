@@ -1,19 +1,18 @@
 import { Test, TestingModule } from '@nestjs/testing'
-import { FlashcardsController } from './flashcards.controller'
 import { getTestingMongooseModuleImports } from '../test-utils/db-entities.utils'
-import { FlashcardsModule } from './flashcards.module'
+import { UserController } from './user.controller'
+import { UserModule } from './users.module'
 
-describe('FlashcardsController', () => {
+describe('User Controller tests', () => {
   let module: TestingModule
-  let controller: FlashcardsController
+  let controller: UserController
 
   beforeAll(async () => {
     module = await Test.createTestingModule({
       // eslint-disable-next-line no-extra-parens
-      imports: [...(await getTestingMongooseModuleImports()), FlashcardsModule],
+      imports: [...(await getTestingMongooseModuleImports()), UserModule],
     }).compile()
-
-    controller = module.get<FlashcardsController>(FlashcardsController)
+    controller = module.get<UserController>(UserController)
   })
 
   afterAll(async () => {
