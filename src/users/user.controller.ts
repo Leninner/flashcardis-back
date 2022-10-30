@@ -1,12 +1,15 @@
-import { Controller, Get } from '@nestjs/common'
+import { Body, Controller, Post, UseFilters } from '@nestjs/common'
+import { ValidationFilter } from '../exceptions/validation-filter.utils'
+import { CreateUserDto } from './dtos/create-user.dto'
 import { UserService } from './user.service'
 
-@Controller('flashcards')
+@Controller('users')
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
-  @Get()
-  create() {
-    return this.userService.create()
+  @Post('login')
+  @UseFilters(new ValidationFilter())
+  createUser(@Body() data: CreateUserDto) {
+    return this.userService.create(data)
   }
 }

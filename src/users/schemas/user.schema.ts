@@ -23,7 +23,7 @@ export class User {
     required: true,
     type: String,
   })
-  name: string
+  userName: string
 
   @Prop({
     required: true,
@@ -32,12 +32,12 @@ export class User {
   role: string[]
 
   @Prop({
-    required: true,
+    autopopulate: true,
   })
   createdAt: Date
 
   @Prop({
-    auto: true,
+    autopopulate: true,
   })
   updatedAt: Date
 }

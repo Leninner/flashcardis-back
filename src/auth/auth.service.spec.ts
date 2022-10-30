@@ -1,0 +1,26 @@
+import { JwtModule } from '@nestjs/jwt'
+import { Test, TestingModule } from '@nestjs/testing'
+import { getTestingMongooseModuleImports } from '../test-utils/db-entities.utils'
+import { UserModule } from '../users/users.module'
+import { AuthService } from './auth.service'
+
+describe('AuthService', () => {
+  let service: AuthService
+
+  beforeEach(async () => {
+    const module: TestingModule = await Test.createTestingModule({
+      imports: [
+        JwtModule,
+        UserModule,
+        ...(await getTestingMongooseModuleImports()),
+      ],
+      providers: [AuthService],
+    }).compile()
+
+    service = module.get<AuthService>(AuthService)
+  })
+
+  it('should be defined', () => {
+    expect(service).toBeDefined()
+  })
+})
