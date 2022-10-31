@@ -5,6 +5,7 @@ import { CreateUserDto } from './dtos/create-user.dto'
 import { User, UserDocument } from './schemas/user.schema'
 import * as bcryptjs from 'bcryptjs'
 import { CreateUserErrors } from '../constants/create-user-errors.utils'
+import { ROLES } from '../constants/roles.utils'
 
 @Injectable()
 export class UserService {
@@ -34,7 +35,7 @@ export class UserService {
 
     return this.userModel.create({
       ...createUserDto,
-      role: ['user'],
+      roles: [ROLES.USER],
     })
   }
 

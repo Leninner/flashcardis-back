@@ -27,9 +27,9 @@ export class User {
 
   @Prop({
     required: true,
-    type: Array,
+    type: [String],
   })
-  role: string[]
+  roles: string[]
 
   @Prop({
     autopopulate: true,
